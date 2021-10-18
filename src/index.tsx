@@ -1,9 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import store from './store'
+import { store } from './app/store'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-import './index.css'
+// import './index.css'
+import './App.css'
 
 import App from './App'
 

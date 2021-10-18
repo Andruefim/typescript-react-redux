@@ -1,21 +1,20 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
-
-import { Navbar } from './components/Navbar'
-import { About } from './pages/About'
-import { Home } from './pages/Home'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+// eslint-disable-next-line import/no-cycle
+import SingleCountryPage from './pages/singleCityPage/SingleCityPage'
+import CountriesList from './pages/citiesPage/CitiesList'
+import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <div className="container">
-        <Switch>
-          <Route path="/" component={Home} exact />
-          <Route path="/about" component={About} />
-        </Switch>
+    <Router>
+      <div className="App">
+        <Route path="/" component={CountriesList} />
+        <Route path="/countries/:countryId" component={SingleCountryPage} />
       </div>
-    </BrowserRouter>
+    </Router>
   )
 }
 

@@ -1,10 +1,10 @@
 import { combineReducers, createStore } from 'redux'
 import { devToolsEnhancer } from 'redux-devtools-extension'
-import { CounterReducer } from './features/counter'
+import countriesReducer from './redux/citiesSlice/citiesSlice'
 
 /* Create root reducer, containing all features of the application */
 const rootReducer = combineReducers({
-  count: CounterReducer,
+  countries: countriesReducer,
 })
 
 const store = createStore(
