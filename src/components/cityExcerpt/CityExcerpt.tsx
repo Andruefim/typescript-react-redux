@@ -24,6 +24,7 @@ const CityExcerpt: React.FC<CityExcerptProps> = (
 ) => {
   const countries = useAppSelector(AllCountries)
   const dispatch = useDispatch()
+
   const onDeleteClicked = () => {
     dispatch(deleted({ deleteById: countryId.countryId.id }))
     const deleteCities = countries.filter(
@@ -34,6 +35,7 @@ const CityExcerpt: React.FC<CityExcerptProps> = (
     const serializedSearch = JSON.stringify(allCities)
     localStorage.setItem('cities', serializedSearch)
   }
+
   const onUpdateClicked = () => {
     dispatch(deleted({ deleteById: countryId.countryId.id }))
     dispatch(fetchCountries(countryId.countryId.name))
@@ -45,7 +47,9 @@ const CityExcerpt: React.FC<CityExcerptProps> = (
     >
       <div className="link-excerpt h-100 pb-5 d-flex flex-column align-items-center">
         <div className="total-country mt-4">
-          <h1>{countryId.countryId.name}</h1>
+          <h1>
+            <strong>{countryId.countryId.name}</strong>
+          </h1>
         </div>
         <div className="total-confirmed d-flex w-100 justify-content-between px-4 mt-4">
           <h3 className="px-3">{countryId.countryId.main}</h3>
@@ -63,6 +67,7 @@ const CityExcerpt: React.FC<CityExcerptProps> = (
             <button
               type="button"
               className="btn-update btn btn-primary mt-2 w-50 mx-1"
+              data-qa="update-clicked"
               onClick={onUpdateClicked}
             >
               update
@@ -70,6 +75,7 @@ const CityExcerpt: React.FC<CityExcerptProps> = (
             <button
               type="button"
               className="btn btn-danger mt-2 w-50 mx-1"
+              data-qa="delete-clicked"
               onClick={onDeleteClicked}
             >
               delete

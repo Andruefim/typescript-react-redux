@@ -26,7 +26,9 @@ const SingleCityPage = ({ match }: RouteComponentProps<SingleProps>) => {
   return (
     <section className="singlecountry-container">
       <article className="userSingle d-flex flex-column align-items-center">
-        <h1 className="mt-4">{country.name}</h1>
+        <h1 className="mt-4">
+          <strong>{country.name}</strong>
+        </h1>
         <div className="d-flex">
           <h1>{`${country.temp}°C`}</h1>
         </div>

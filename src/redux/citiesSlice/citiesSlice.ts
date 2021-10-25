@@ -28,9 +28,8 @@ interface FetchAction {
 export const fetchCountries = createAsyncThunk(
   'countries/fetchCountries',
   async (countryName: string) => {
-    const country = countryName
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${country}&appid=4dfb0c4c9d27781de183190eadde96b8`
+      `https://api.openweathermap.org/data/2.5/weather?q=${countryName}&appid=4dfb0c4c9d27781de183190eadde96b8`
     )
     const result = await response.text()
     const obj = JSON.parse(result)
@@ -74,7 +73,7 @@ const citiesSlice = createSlice({
       )
       .addCase(fetchCountries.rejected, (state, action) => {
         state.status = 'failed'
-        state.error = action.error.message!
+        state.error = action.error?.message!
       })
   },
 })

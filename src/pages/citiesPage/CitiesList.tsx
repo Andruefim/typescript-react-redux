@@ -51,7 +51,7 @@ const CountriesList: React.FC = () => {
 
   useEffect(() => {
     const serializedSearch = localStorage.getItem('cities')
-    const initialCities: CityName = JSON.parse(serializedSearch!)
+    const initialCities: CityName = JSON.parse(serializedSearch!) || []
     // console.log(initialCities)
     if (countriesStatus === 'idle') {
       initialCities.forEach((city: string) => dispatch(fetchCountries(city)))
@@ -69,6 +69,7 @@ const CountriesList: React.FC = () => {
           <button
             onClick={onLogoClicked}
             type="button"
+            data-qa="refresh-search"
             className="logo-container btn-dark shadow-none h-100 d-flex col-5 col-md-4"
           >
             <div className="logo">
@@ -92,6 +93,7 @@ const CountriesList: React.FC = () => {
             <button
               style={{ backgroundColor: 'white', border: 'none' }}
               type="button"
+              data-qa="add-city"
               onClick={onSearchClicked}
             >
               <img className="search-Img" alt="search" src={searchImg} />
